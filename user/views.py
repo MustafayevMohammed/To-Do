@@ -1,3 +1,5 @@
+from django.core.exceptions import ValidationError
+import user
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render,redirect
 from .forms import *
@@ -9,8 +11,9 @@ def registerPage(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("index")
-
+            return redirect("tasks:index")
 
     context = {"form":form}
     return render(request,"register.html",context)
+
+

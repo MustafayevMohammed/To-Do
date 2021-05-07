@@ -17,6 +17,13 @@
             </g>
         </g>
     </svg>Tamamlananlar</a>
+<br>
+<hr>
+<span>
+    Xos Geldin! {{request.user.username}}
+    <a style="margin-left: 400px;" href="{% url 'user:register' %}" class="btn btn-info btn-sm">Qeydiyatdan Kec</a>
+</span>
+
 <hr>
 <form action="/" method="POST">
     {% csrf_token %}

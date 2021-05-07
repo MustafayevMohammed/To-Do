@@ -1,3 +1,4 @@
+from tasks.views import deleteTask
 from django import forms
 from django.db.models import fields
 from django.forms import ModelForm, widgets
@@ -25,6 +26,3 @@ class RegisterForm(UserCreationForm):
         }
         fields = ["password1","password2","username","email"]
 
-        
-
-        

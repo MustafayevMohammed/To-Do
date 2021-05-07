@@ -1,0 +1,7 @@
+.outter-error{
+    border-radius: 7px;
+}
+.outter-error a{
+    text-decoration: none;
+    color: rgb(224, 85, 85);
+}
