@@ -2,26 +2,10 @@
 {% load static %}
 {% block body %}
 <h3>Qeydiyatdan Kec</h3>
-<link rel="stylesheet" type="text/css"  href="{% static 'css/style3.css' %}">
-<form action="" method="post">
+<form action="" method="POST">
 {% csrf_token %}
-Istifadeci Adi:
-<br>
-{{form.username}}
-<hr>
-Email:
-<br>
-{{form.email}}
-<hr>
-<span style="margin-left:170px;">Parol:</span> 
-<br>
-{{form.password1}}
-<hr>
-<span style="margin-left:170px;">Parol Dogrula:</span> 
-<br>
-{{form.password2}}
-<hr>
-<button type="submit" class="btn-block btn-group-sm btn-info subbut h5">Qeydiyatdan Kec</button>
-<hr>
+{{form}}
+<button class="btn-block btn-danger" type="submit">gonder</button>
+
 </form>
 {% endblock body %}

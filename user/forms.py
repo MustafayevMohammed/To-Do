@@ -8,23 +8,6 @@ from django.contrib.auth.models import User
 
 class RegisterForm(UserCreationForm):
 
-    password1 = CharField(
-        widget=forms.PasswordInput(attrs={'class':'passfields'})
-    )
-    password2 = CharField(
-        widget=forms.PasswordInput(attrs={'class':'passfields'})
-    )
-
     class Meta(UserCreationForm.Meta):
         model = User
-        widgets = {
-            'username': forms.TextInput(attrs={'class':'fields'}),
-            'email': forms.TextInput(attrs={'class':'fields'}),
-            
-
-        }
-        fields = ["password1","password2","username","email"]
-
-        
-
-        
+        fields = ["username","password1","password2"]        
