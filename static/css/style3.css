@@ -1,0 +1,17 @@
+.fields{
+    border: 0px;
+    width: 100%;
+    border-radius: 4px;
+    height: 30px;
+}
+.passfields{
+    text-align: center;
+    margin-left: 170px;
+    border-radius: 4px;
+    width: 50%;
+
+}
+
+.subbut{
+    border-radius: 3px;
+}

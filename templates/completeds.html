@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+<div>
+    <link rel="stylesheet" href="static/css/style2.css">
+    <h3 style="display: inline; margin-right: 380px;">Tamamlanmislar</h3>
+    <a class="btn-sm btn-warning taskbutton" href="/">
+        <i class="fas fa-tasks taskicon" style="padding: 10px; padding-top: 30px; padding-bottom: 30px;">
+            Tasklar
+        </i>
+    </a>
+
+    {% if tasks %}
+    {% for task in tasks %}
+    <hr>
+    <span><del>{{task.title}}</del></span><br>
+    <a href="{% url 'tasks:update_task' task.id %}" class="btn btn-info btn-sm">Guncelle</a>
+    <a href="{% url 'tasks:delete_task' task.id %}" class="btn btn-danger btn-sm">Sil</a>
+    {% endfor %}
+    {% else %}
+    <hr>
+    <hr><br><br>
+    <h5>Tamamlanmis Task Yoxdur!</h5>
+    {% endif %}
+</div>
+
+{% endblock body %}
