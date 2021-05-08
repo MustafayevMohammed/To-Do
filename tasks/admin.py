@@ -4,7 +4,7 @@ from . import models
 @admin.register(models.Task)
 class TaskAdmin(admin.ModelAdmin):
     
-    list_display = ["id","title"]
+    list_display = ["id","title","author"]
     list_display_links = ["id","title"]
     class Meta:
         model = models.Task
