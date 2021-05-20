@@ -4,7 +4,14 @@
 <h3>Edit To-Do</h3>
 <form method="POST" action="">
 {% csrf_token %}
-{{form}}
-<input type="submit" value="Bitdi!">
+Basliq:
+<br>
+{{form.title}}
+<hr>
+Tamamlanib?:
+{{form.confirm}}
+<hr>
+
+<input class="btn-danger btn-sm" type="submit" value="Bitdi!">
 </form>
 {% endblock body %}
