@@ -1,8 +1,7 @@
 {% extends 'layout.html' %}
 {% load static %}
-
 {% block body %}
-<link rel="stylesheet" href="static/css/style.css">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 <h2 style="display: inline;">To-Do List</h2>
 
 
@@ -23,26 +22,32 @@
 <br>
 {% if request.user %}
 Xos Geldin! {{request.user.username}}
+<br>
+{% if request.user.is_authenticated %}
+<a href="{% url 'user:logout' %}" class="btn btn-warning"
+    style="margin-left: 600px; padding-left: 15px; padding-right:15px; margin-top: 10px;"><img
+        src="https://img.icons8.com/android/24/000000/logout-rounded-left.png" /><span style="margin-left: 5px;">Cixis
+        Et<span></a>
 
+{% else %}
+<span>
+    <a style="margin-left: 130px;" href="{% url 'user:login' %}" class="btn btn-warning btn-sm">Giris Et</a>
+    <a style="margin-left: 3px;" href="{% url 'user:register' %}" class="btn btn-info btn-sm">Qeydiyatdan Kec</a>
+</span>
+{% endif %}
 {% else %}
 Giris Edin
 {% endif %}
 
 <hr>
-<form action="/" method="POST" style="display: inline-block;">
+<form action="/" method="POST" style="display: inline-block;" class="addform">
     {% csrf_token %}
+    Task Daxil Edin:
+    <br>
     {{form.title}}
-    <input type="submit" value="Elave-Et" class="btn-sm btn-primary">
+    <input type="submit" value="Elave-Et" class="btn-sm btn-primary btn-block">
 </form>
-    {% if request.user.is_authenticated %}
-    <a href="{% url 'user:logout' %}" class="btn btn-warning btn-" style="margin-left: 325px; padding-left: 15px; padding-right:15px;">Cixis Et</a>
 
-    {% else %}
-        <span>
-            <a style="margin-left: 130px;" href="{% url 'user:login' %}" class="btn btn-warning btn-sm">Giris Et</a>
-            <a style="margin-left: 3px;" href="{% url 'user:register' %}" class="btn btn-info btn-sm">Qeydiyatdan Kec</a>
-        </span>
-    {% endif %}
 
 
 <hr>
@@ -57,7 +62,8 @@ Giris Edin
     <div>
         <a href="{% url 'tasks:update_task' task.id %}" class="btn btn-info btn-sm button1"
             style="margin-left: 0px; margin-top: 0px;">Guncelle</a>
-        <a href="{% url 'tasks:delete_task' task.id %}" class="btn btn-danger btn-sm button2" style="margin-top: 0px">Sil</a>
+        <a href="{% url 'tasks:delete_task' task.id %}" class="btn btn-danger btn-sm button2"
+            style="margin-top: 0px">Sil</a>
     </div>
 
     <hr>

@@ -51,7 +51,7 @@ def deleteTask(request,id):
 
 @login_required(login_url="user:login")
 def complededTasks(request):
-    tasks = models.Task.objects.filter(confirm="True")
+    tasks = models.Task.objects.filter(confirm="True",author=request.user)
     
     context = {
         "tasks":tasks,

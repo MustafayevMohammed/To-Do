@@ -8,7 +8,7 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model = models.Task
         widgets = {
-            'title': forms.TextInput(attrs={'placeholder': 'Task Daxil Edin:','class':'addbar','spellcheck':'false'}),
+            'title': forms.Textarea(attrs={'class':'addbar','spellcheck':'false','cols':81,'rows':4}),
         }
         fields = "__all__"
         
