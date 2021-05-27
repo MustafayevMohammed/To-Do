@@ -8,7 +8,7 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model = models.Task
         widgets = {
-            'title': forms.Textarea(attrs={'class':'addbar','spellcheck':'false','cols':81,'rows':4}),
+            'title': forms.Textarea(attrs={'class':'addbar','spellcheck':'false','cols':81,'rows':4,'style':'resize:none;'}),
         }
         fields = "__all__"
         
