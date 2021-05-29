@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url="user:login")
 def index(request):
-    tasks = models.Task.objects.filter(confirm="False",author=request.user)
+    tasks = models.Task.objects.filter(confirm="False",author=request.user).order_by('-id')
     form = TaskForm()
     
     if request.method == "POST":
