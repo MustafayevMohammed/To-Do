@@ -11,10 +11,10 @@ from django.contrib.auth.models import User
 class RegisterForm(UserCreationForm):
 
     password1 = CharField(
-        widget=forms.PasswordInput(attrs={'class':'passfields'})
+        widget=forms.PasswordInput(attrs={'class':'passfields','style':'text-align:center; margin-left:100px; width:75%; border-radius:3px;'})
     )
     password2 = CharField(
-        widget=forms.PasswordInput(attrs={'class':'passfields'})
+        widget=forms.PasswordInput(attrs={'class':'passfields','style':'text-align:center; margin-left:100px; width:75%; border-radius:3px;'})
     )
 
     class Meta(UserCreationForm.Meta):
