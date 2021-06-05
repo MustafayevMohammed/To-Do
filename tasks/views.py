@@ -22,6 +22,7 @@ def index(request):
     }
     return render(request,"index.html",context)
 
+
 @login_required(login_url="user:login")
 def updateTask(request,id):
     task = models.Task.objects.get(id=id)

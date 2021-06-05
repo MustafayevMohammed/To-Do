@@ -22,9 +22,8 @@ class RegisterForm(UserCreationForm):
         widgets = {
             'username': forms.TextInput(attrs={'class':'fields'}),
             'email': forms.TextInput(attrs={'class':'fields'}),
-            
-
         }
+        
         fields = ["password1","password2","username","email"]
 
 
