@@ -44,9 +44,13 @@ def updateTask(request,id):
 @login_required(login_url="user:login")
 def deleteTask(request,id):
     task = models.Task.objects.get(id=id)
+    
+    if request.user == task.author:
+        task.delete()
+        return redirect("/")
+    else:
+        raise ValueError("Bu Task Sizin Deyil!")
 
-    task.delete()
-    return redirect("/")
     context = {
         "task":task,
     }
