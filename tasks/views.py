@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     tasks = models.Task.objects.filter(confirm="False",author=request.user).order_by('-id')
     form = TaskForm()
-    
+
     if request.method == "POST":
         form = TaskForm(request.POST)
         if form.is_valid:
@@ -28,12 +28,14 @@ def updateTask(request,id):
     task = models.Task.objects.get(id=id)
     form = TaskForm(instance=task)
 
-    if request.method == "POST":
-        form = TaskForm(request.POST,instance=task)
-        if form.is_valid:
-            form.save()
-            return redirect("/")
-
+    if request.user == task.author:
+        if request.method == "POST":
+            form = TaskForm(request.POST,instance=task)
+            if form.is_valid:
+                form.save()
+                return redirect("/")
+    else:
+        raise ValueError("Bu Task Sizin Deyil!")
     context = {
         "form":form,
     }
@@ -53,10 +55,9 @@ def deleteTask(request,id):
 @login_required(login_url="user:login")
 def complededTasks(request):
     tasks = models.Task.objects.filter(confirm="True",author=request.user)
-    
+
     context = {
         "tasks":tasks,
     }
 
     return render(request,"completeds.html",context)
-
